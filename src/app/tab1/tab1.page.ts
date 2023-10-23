@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Product } from '../models/product.model';
 
+export var productsCar : Product [] = [];
 
 @Component({
   selector: 'app-tab1',
@@ -10,13 +11,13 @@ import { Product } from '../models/product.model';
 export class Tab1Page {
   public products : Product [] = [];
   public productsFounds : Product [] = [];
+  public productsCar = productsCar;
   public filter = [
     "Abarrotes",
     "Frutas Y Verduras",
     "Farmacia",
     "Limpieza"
-  ] 
-  public productsCar : Product [] = [];
+  ]
 
   constructor() {
     this.products.push({
@@ -49,6 +50,8 @@ export class Tab1Page {
     });
 
     this.productsFounds = this.products;
+
+    
   }
 
   public filterProducts():void{
@@ -65,7 +68,7 @@ export class Tab1Page {
     console.log(product);
     if(product.cantidad == undefined){
       product.cantidad = 1;
-      this.productsCar.push(product);
+      productsCar.push(product);
     }else{
     product.cantidad += 1;
     }
@@ -74,7 +77,7 @@ export class Tab1Page {
 
   public total():number{
     let total = 0;
-    for(let product of this.productsCar){
+    for(let product of productsCar){
       if(product.cantidad != undefined){
       total += product.price * product.cantidad;
       }
@@ -82,7 +85,4 @@ export class Tab1Page {
     return total;
   }
 
-  public getProductsCar():any{
-    return this.productsCar;
-  }
 }
