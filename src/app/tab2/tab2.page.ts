@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Product } from '../models/product.model';
+import { Tab1Page } from '../tab1/tab1.page';
+
 
 @Component({
   selector: 'app-tab2',
@@ -6,7 +9,12 @@ import { Component } from '@angular/core';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
+  
+  public productsCar : Product [] = [];
+  constructor() {
+    
+    
 
-  constructor() {}
+  }
 
 }
