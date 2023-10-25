@@ -20,7 +20,7 @@
               <h1>{{product.name}}</h1>
               <p style="display: inline-block;">Cantidad: {{product.cantidad}}</p>
             </ion-label>
-            <ion-note slot="end" style="font-size: 26px;">{{product.price | currency}} </ion-note>
+            <ion-note slot="end" style="font-size: 26px;">{{priceTotal(product)| currency}} </ion-note>
             
             <ion-item-option slot="end" color="danger" expandable="true">
               <ion-icon slot="icon-only" name="trash"></ion-icon>

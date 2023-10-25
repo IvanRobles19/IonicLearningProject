@@ -29,4 +29,11 @@ export class Tab2Page {
     return total;
   }
 
+  public priceTotal(product: Product):number{
+    if(product.cantidad != undefined){
+    return product.price * product.cantidad;
+    }
+    return 0;
+  }
+
 }
