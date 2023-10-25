@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Product } from '../models/product.model';
 
+
 export var productsCar : Product [] = [];
 
 @Component({
@@ -9,9 +10,11 @@ export var productsCar : Product [] = [];
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+  
   public products : Product [] = [];
   public productsFounds : Product [] = [];
   public productsCar = productsCar;
+  public totalCar = 0;
   public filter = [
     "Abarrotes",
     "Frutas Y Verduras",
@@ -48,6 +51,70 @@ export class Tab1Page {
       type: 'Limpieza',
       photo: 'https://picsum.photos/500/300?random'
     });
+    this.products.push({
+      name: 'Arroz Integral',
+      price: 50,
+      description: 'Arroz integral de alta calidad en paquete de 1kg.',
+      type: 'Abarrotes',
+      photo: 'https://picsum.photos/500/300?random'
+    });
+    
+    this.products.push({
+      name: 'Manzanas Gala',
+      price: 35,
+      description: 'Manzanas Gala frescas y deliciosas.',
+      type: 'Frutas Y Verduras',
+      photo: 'https://picsum.photos/500/300?random'
+    });
+    
+    this.products.push({
+      name: 'Ibuprofeno',
+      price: 23,
+      description: 'Ibuprofeno 200mg para alivio del dolor.',
+      type: 'Farmacia',
+      photo: 'https://picsum.photos/500/300?random'
+    });
+    
+    this.products.push({
+      name: 'Lavavajillas',
+      price: 17,
+      description: 'Lavavajillas líquido con aroma a limón.',
+      type: 'Limpieza',
+      photo: 'https://picsum.photos/500/300?random'
+    });
+    this.products.push({
+      name: 'Aceite de Oliva Extra Virgen',
+      price: 31,
+      description: 'Aceite de oliva extra virgen de alta calidad, botella de 500ml.',
+      type: 'Abarrotes',
+      photo: 'https://picsum.photos/500/300?random'
+    });
+    
+    this.products.push({
+      name: 'Manzanas Orgánicas',
+      price: 21,
+      description: 'Manzanas orgánicas frescas, paquete de 4 unidades.',
+      type: 'Frutas Y Verduras',
+      photo: 'https://picsum.photos/500/300?random'
+    });
+    
+    this.products.push({
+      name: 'Cubrebocas',
+      price: 100,
+      description: 'Cubrebocas de 3 capas, paquete de 10 piezas.',
+      type: 'Farmacia',
+      photo: 'https://picsum.photos/500/300?random'
+    });
+    
+    this.products.push({
+      name: 'Detergente para Ropa',
+      price: 25,
+      description: 'Detergente líquido para ropa, botella de 2 litros.',
+      type: 'Limpieza',
+      photo: 'https://picsum.photos/500/300?random'
+    });
+    
+
 
     this.productsFounds = this.products;
 
@@ -72,7 +139,7 @@ export class Tab1Page {
     }else{
     product.cantidad += 1;
     }
-    
+    this.totalCar++;
   }
 
   public total():number{
@@ -84,5 +151,6 @@ export class Tab1Page {
     }
     return total;
   }
+
 
 }

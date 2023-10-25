@@ -12,10 +12,21 @@ export class Tab2Page {
 
   public productsCar = productsCar;
   
+  
   constructor() {
     
     
 
+  }
+
+  public total():number{
+    let total = 0;
+    for(let product of productsCar){
+      if(product.cantidad != undefined){
+      total += product.price * product.cantidad;
+      }
+    }
+    return total;
   }
 
 }
