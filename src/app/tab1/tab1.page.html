@@ -28,6 +28,11 @@
     <ion-row>
           <ion-col size="6" *ngFor="let product of productsFounds; index as i">
             <ion-card >
+              <div class="favorite-overlay">
+              <div class="favorite-button" (click)="addProductFav(product)" style="cursor: pointer;" >
+                <ion-icon name="star" color="warning" ></ion-icon>
+              </div>
+             </div>
               <img alt="Silhouette of mountains" [src]="product.photo+i" />
               <ion-card-header>
                 <ion-card-title>

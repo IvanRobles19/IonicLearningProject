@@ -3,6 +3,7 @@ import { Product } from '../models/product.model';
 
 
 export var productsCar : Product [] = [];
+export var productsFav : Product [] = [];
 
 @Component({
   selector: 'app-tab1',
@@ -14,6 +15,7 @@ export class Tab1Page {
   public products : Product [] = [];
   public productsFounds : Product [] = [];
   public productsCar = productsCar;
+  public productsFav = productsFav;
   public totalCar = 0;
   public filter = [
     "Abarrotes",
@@ -132,7 +134,7 @@ export class Tab1Page {
   }
 
   public addProduct(product: Product):void{
-    console.log(product);
+    
     if(product.cantidad == undefined){
       product.cantidad = 1;
       productsCar.push(product);
@@ -141,6 +143,15 @@ export class Tab1Page {
     }
     this.totalCar++;
   }
+
+  public addProductFav(product: Product):void{
+    if (!productsFav.some((item) => item.name === product.name)) {
+      productsFav.push(product);
+    }
+    
+  }
+
+
 
   public total():number{
     let total = 0;
