@@ -1,7 +1,8 @@
+import { Product } from './../models/product.model';
+import { Compra } from './../models/compra.model';
 import { Component } from '@angular/core';
-import { Product } from '../models/product.model';
 import { productsCar } from '../tab1/tab1.page';
-
+import { Compras } from '../tab4/tab4.page';
 
 @Component({
   selector: 'app-tab2',
@@ -34,6 +35,16 @@ export class Tab2Page {
     return product.price * product.cantidad;
     }
     return 0;
+  }
+
+  public comprar(carrito:Product[]):void{
+    let compra: Compra = {
+      productos: carrito,
+      total: this.total(),
+      fecha: new Date().toString()
+    }
+    Compras.push(compra);
+    //productsCar = [];
   }
 
 }

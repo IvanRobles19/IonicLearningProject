@@ -151,6 +151,10 @@ export class Tab1Page {
     
   }
 
+  public clearCar():void{
+    productsCar = [];
+    this.totalCar = 0;
+  }
 
 
   public total():number{
