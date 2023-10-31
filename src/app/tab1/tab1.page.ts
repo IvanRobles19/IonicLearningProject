@@ -15,8 +15,6 @@ export class Tab1Page {
   
   public products : Product [] = [];
   public productsFounds : Product [] = [];
-  public productsCar = productsCar;
-  public productsFav = productsFav;
   public totalCar = 0;
   public filter = [
     "Abarrotes",

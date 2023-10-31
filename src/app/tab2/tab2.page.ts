@@ -17,7 +17,6 @@ export class Tab2Page {
   constructor( private cartService: CartService) {
     this.productsCar = this.cartService.getProductsCar();
     
-
   }
 
   public total():number{
