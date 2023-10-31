@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { productsCar } from '../tab1/tab1.page';
 import { productsFav } from '../tab1/tab1.page';
 import { Product } from '../models/product.model';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-tab3',
@@ -11,7 +12,9 @@ import { Product } from '../models/product.model';
 export class Tab3Page {
   public productsFav = productsFav;
 
-  constructor() {}
+  constructor( private cartService: CartService  ) {
+    
+  }
 
   public eliminarFav(index : any){
     productsFav.splice(index, 1);

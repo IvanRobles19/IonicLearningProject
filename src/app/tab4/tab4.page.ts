@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Product } from '../models/product.model';
 import { Compra } from '../models/compra.model';
+import { CartService } from '../services/cart.service';
 
-export var Compras: Compra[] = [];
 
 @Component({
   selector: 'app-tab4',
@@ -10,9 +10,11 @@ export var Compras: Compra[] = [];
   styleUrls: ['tab4.page.scss'],
 })
 export class Tab4Page {
-  public Compras = Compras;
+  public Compras : Compra[] = [];
 
-  constructor() {}
+  constructor( private cartService: CartService) {
+    this.Compras = this.cartService.getCompras();
+  }
 
   subTotal(product: Product): any {
     if (product.cantidad != undefined) {

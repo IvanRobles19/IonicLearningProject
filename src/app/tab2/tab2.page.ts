@@ -1,8 +1,8 @@
 import { Product } from './../models/product.model';
 import { Compra } from './../models/compra.model';
 import { Component } from '@angular/core';
-import { productsCar } from '../tab1/tab1.page';
-import { Compras } from '../tab4/tab4.page';
+
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-tab2',
@@ -11,18 +11,18 @@ import { Compras } from '../tab4/tab4.page';
 })
 export class Tab2Page {
 
-  public productsCar = productsCar;
+  public productsCar : Product [] = [];
   
   
-  constructor() {
-    
+  constructor( private cartService: CartService) {
+    this.productsCar = this.cartService.getProductsCar();
     
 
   }
 
   public total():number{
     let total = 0;
-    for(let product of productsCar){
+    for(let product of this.productsCar){
       if(product.cantidad != undefined){
       total += product.price * product.cantidad;
       }
@@ -38,13 +38,30 @@ export class Tab2Page {
   }
 
   public comprar(carrito:Product[]):void{
+    let cantidades: number[] = carrito
+  .map((product) => product.cantidad)
+  .filter((cantidad): cantidad is number => cantidad !== undefined);
     let compra: Compra = {
       productos: carrito,
+      cantidades: cantidades,
       total: this.total(),
       fecha: new Date().toString()
     }
-    Compras.push(compra);
-    //productsCar = [];
+    this.cartService.addCompra(compra);
+    console.log(this.cartService.getCompras());
+    this.cartService.clearCar();
+    this.productsCar = this.cartService.getProductsCar();
+    
   }
+
+  getQuantitiesList() {
+    return this.productsCar.map((product) => {
+      return {
+        name: product.name,
+        quantity: product.cantidad,
+      };
+    });
+  }
+
 
 }
